@@ -3,6 +3,7 @@
 import { iconChat, RobotHome } from "@/assets";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,7 +22,9 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-col items-center justify-end pb-10 pr-10 hidden lg:flex">
+          <Link href="/chatPage">
           <Image src={iconChat} alt={"Ícone de chat"} className="cursor-pointer"></Image>
+          </Link>
         </div>
       </div>
     </div>
