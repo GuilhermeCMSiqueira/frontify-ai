@@ -4,3 +4,9 @@ export interface Message {
     sender: "user" | "other";
     timestamp: Date;
   }
+
+  export interface ParsedChatHistory {
+    id: string;
+    role: 'user' | 'model';
+    text: string;
+  }

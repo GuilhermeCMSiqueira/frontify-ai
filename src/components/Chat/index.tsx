@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
-import { Message } from "@/types/chat";
+import { Message } from "@/types";
 import { useToast } from "@/hooks/use-toast"
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([
