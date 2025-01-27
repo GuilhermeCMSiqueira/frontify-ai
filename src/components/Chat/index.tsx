@@ -1,14 +1,18 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import { Message } from "@/types";
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
+import { config } from "@/lib/utils";
+
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content: "Hello! How can I help you today?",
+      content: "Olá! Como posso te ajudar hoje?",
       sender: "other",
       timestamp: new Date(),
     },
@@ -22,7 +26,7 @@ export const Chat = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!newMessage.trim()) {
       toast({
         title: "Cannot send empty message",
@@ -37,18 +41,45 @@ export const Chat = () => {
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, message]);
+    let messageContent = `${message.content}`;
+    
+    let payload = "";
+    
+    try {
+      console.log(messageContent);
+      const response = await fetch("http://localhost:3000/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ body: messageContent }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        payload = data.output;
+      }
+
+      console.log(payload);
+      
+    } catch (error) {
+      console.error(error);
+    }
+
     setNewMessage("");
-    // Simulate response
+    
     setTimeout(() => {
       const response: Message = {
         id: (Date.now() + 1).toString(),
-        content: "Thanks for your message! This is a simulated response.",
+        content: payload,
         sender: "other",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, response]);
     }, 1000);
   };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();

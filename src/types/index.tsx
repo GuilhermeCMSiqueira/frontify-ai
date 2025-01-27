@@ -7,6 +7,6 @@ export interface Message {
 
   export interface ParsedChatHistory {
     id: string;
-    role: 'user' | 'model';
-    text: string;
+    role: 'user' | 'other';
+    content: string;
   }
