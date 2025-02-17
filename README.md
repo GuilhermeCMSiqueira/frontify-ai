@@ -15,7 +15,7 @@
 4. Como Usar
 
 ### 1. Tecnologias Utilizadas
-O Frontify AI foi desenvolvido utilizando as seguintes tecnologias:
+> O Frontify AI foi desenvolvido utilizando as seguintes tecnologias:
 
 - Next.js – Framework para React com renderização otimizada.
 - TypeScript – Tipagem estática para maior segurança e escalabilidade.
@@ -23,7 +23,7 @@ O Frontify AI foi desenvolvido utilizando as seguintes tecnologias:
 - Gemini API – Inteligência artificial para fornecer dicas personalizadas.
 
 ### 2. Requisitos
-Antes de instalar o Frontify AI, verifique se você possui os seguintes requisitos:
+> Antes de instalar o Frontify AI, verifique se você possui os seguintes requisitos:
 
 - Yarn ou npm para gerenciar pacotes
 - Chave de API do Gemini para integração com IA
@@ -41,11 +41,11 @@ npm install
 yarn install
 ```
 #### Configure as variáveis de ambiente:
-Crie um arquivo .env.local na raiz do projeto e adicione:
+> Crie um arquivo .env.local na raiz do projeto e adicione:
 ```
 GEMINI_API_KEY=sua-chave-aqui
 ```
-Execute o projeto em ambiente de desenvolvimento:
+> Execute o projeto em ambiente de desenvolvimento:
 ```
 npm run dev
 # ou
