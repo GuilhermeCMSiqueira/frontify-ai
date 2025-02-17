@@ -13,6 +13,8 @@
 2. Requisitos
 3. Instruções de Instalação
 4. Como Usar
+5. Status do Projeto
+6. Suporte e Contribuição
 
 ### 1. Tecnologias Utilizadas
 > O Frontify AI foi desenvolvido utilizando as seguintes tecnologias:
@@ -55,3 +57,17 @@ yarn dev
 1. Acesse http://localhost:3000 no navegador.
 2. Digite uma dúvida sobre desenvolvimento front-end.
 3. O Frontify AI fornecerá sugestões personalizadas baseadas no seu nível e stack.
+
+#### 5. Status do Projeto
+- O Frontify AI está atualmente em desenvolvimento. Estamos trabalhando para entregar um MVP funcional e iterar sobre novas funcionalidades. 🚀
+
+#### 6. Suporte e Contribuição
+> Se você tiver dúvidas sobre o projeto ou quiser contribuir, entre em contato com um dos desenvolvedores:
+
+📩 E-mails para contato:
+
+- Guilherme Siqueira – gcms2@cin.ufpe.br
+- Ivo Neto – ilsn@cin.ufpe.br
+- Pedro Fischer – palfl@cin.ufpe.br
+- Jefferson Marcelo – jmps@cin.ufpe.br
+- Vinícius Gabriel – vgls@cin.ufpe.br
