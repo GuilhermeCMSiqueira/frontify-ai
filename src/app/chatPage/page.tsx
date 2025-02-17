@@ -15,8 +15,12 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function chatPage() {
+  const [proficiency, setProficiency] = useState<string>("");
+  const [technology, setTechnology] = useState<string>("");
+  
   return (
     <>
       <Navbar></Navbar>
@@ -42,7 +46,7 @@ export default function chatPage() {
             <h1 className="font-montserrat font-bold text-2xl">
               Parâmetros Opcionais
             </h1>
-            <Select>
+            <Select onValueChange={setProficiency}>
               <SelectTrigger className="w-full max-w-[300px]">
                 <SelectValue placeholder="Qual seu nível de proficiência?" />
               </SelectTrigger>
@@ -67,10 +71,12 @@ export default function chatPage() {
                 id="technology"
                 placeholder="Ex: HTML"
                 className="font-montserrat w-[300px]"
+                value={technology}
+                onChange={(e) => setTechnology(e.target.value)}
               />
             </div>
           </div>
-          <Chat></Chat>
+          <Chat proficiency={proficiency} technology={technology}></Chat>
         </div>
       </div>
     </>
