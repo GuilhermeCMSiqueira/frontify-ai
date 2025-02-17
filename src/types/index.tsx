@@ -10,3 +10,8 @@ export interface Message {
     role: 'user' | 'other';
     content: string;
   }
+
+  export type ChatProps = {
+    proficiency: string;
+    technology: string;
+  };

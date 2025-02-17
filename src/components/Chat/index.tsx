@@ -4,11 +4,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
-import { Message } from "@/types";
+import { Message, ChatProps } from "@/types";
 import { useToast } from "@/hooks/use-toast";
 import { config } from "@/lib/utils";
 
-export const Chat = () => {
+export const Chat = ({ proficiency, technology }: ChatProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -20,31 +20,47 @@ export const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
   const handleSend = async () => {
     if (!newMessage.trim()) {
       toast({
-        title: "Cannot send empty message",
+        title: "Não é possível enviar uma mensagem vazia.",
         variant: "destructive",
       });
       return;
     }
+
+    
     const message: Message = {
       id: Date.now().toString(),
       content: newMessage,
       sender: "user",
       timestamp: new Date(),
     };
+
     setMessages((prev) => [...prev, message]);
     let messageContent = `${message.content}`;
-    
+
+    // Construção da mensagem com proficiência e tecnologia
+    messageContent = newMessage;
+    if (technology && proficiency) {
+      messageContent = `Considere que sou ${proficiency} em ${technology}, considere meu nível de proficiência na hora de dar uma resposta. ${messageContent}`;
+    } else if (technology && !proficiency) {
+      messageContent = `Considere que estou estudando ${technology}. ${messageContent}`;
+    } else if (!technology && proficiency) {
+      messageContent = `Considere que sou ${proficiency} em programação e dê sua resposta de forma adequada para o meu nível de conhecimento. ${messageContent}`;
+    }
+
+
     let payload = "";
-    
+
     try {
       console.log(messageContent);
       const response = await fetch("http://localhost:3000/api", {
@@ -62,13 +78,12 @@ export const Chat = () => {
       }
 
       console.log(payload);
-      
     } catch (error) {
       console.error(error);
     }
 
     setNewMessage("");
-    
+
     setTimeout(() => {
       const response: Message = {
         id: (Date.now() + 1).toString(),
