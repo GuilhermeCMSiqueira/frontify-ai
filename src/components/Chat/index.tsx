@@ -8,7 +8,7 @@ import { Message, ChatProps } from "@/types";
 import { useToast } from "@/hooks/use-toast";
 import { config } from "@/lib/utils";
 
-export const Chat = ({ proficiency, technology }: ChatProps) => {
+const Chat = ({ proficiency, technology }: ChatProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -24,6 +24,8 @@ export const Chat = ({ proficiency, technology }: ChatProps) => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  
+  
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -147,3 +149,5 @@ export const Chat = ({ proficiency, technology }: ChatProps) => {
     </div>
   );
 };
+
+export default Chat;
