@@ -1,7 +1,7 @@
 "use client";
 
 import { iconChat, onlineStatus, robotLogo } from "@/assets";
-import { Chat } from "@/components/Chat";
+import Chat from "@/components/Chat/index";
 import Navbar from "@/components/Navbar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
