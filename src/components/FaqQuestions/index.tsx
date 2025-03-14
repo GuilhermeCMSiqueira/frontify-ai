@@ -1,7 +1,5 @@
 import React from 'react'
 
-// Teste
-
 const FaqQuestions = () => {
   return (
     <ul className="px-20 flex flex-col gap-6">
